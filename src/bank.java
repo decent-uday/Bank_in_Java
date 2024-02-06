@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class bank {
-    private List<Account> accounts;
+    private final List<Account> accounts;
 
     public bank() {
         this.accounts = new ArrayList<>();
@@ -17,7 +17,7 @@ public class bank {
                 + ", Account Balance: " + initialBalance);
     }
 
-    public void makeDeposit(int accountNumber, double amount) {
+    public synchronized void makeDeposit(int accountNumber, double amount) {
         try {
             Account account = findAccount(accountNumber);
             Runnable depositTask = () -> {
@@ -31,7 +31,7 @@ public class bank {
         }
     }
 
-    public void makeWithdrawl(int accountNumber, double amount) {
+    public synchronized void makeWithdrawl(int accountNumber, double amount) {
         try {
             Account account = findAccount(accountNumber);
             Runnable withdrawTask = () -> {

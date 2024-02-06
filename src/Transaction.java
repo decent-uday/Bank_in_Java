@@ -3,9 +3,9 @@ import java.util.Date;
 
 public class Transaction {
 
-    private String type;
-    private double amount;
-    private String timestamp;
+    private final String type;
+    private final double amount;
+    private final String timestamp;
 
     public Transaction(String type, double amount) {
         this.type = type;
